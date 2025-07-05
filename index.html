@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Creative Video & Logo Designer</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#6366f1", secondary: "#8b5cf6" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .dark {
+      background-color: #121212;
+      color: #f3f4f6;
+      }
+      .dark .bg-white {
+      background-color: #1f1f1f;
+      }
+      .dark .text-gray-800 {
+      color: #e5e7eb;
+      }
+      .dark .text-gray-700 {
+      color: #d1d5db;
+      }
+      .dark .text-gray-600 {
+      color: #9ca3af;
+      }
+      .dark .border-gray-200 {
+      border-color: #374151;
+      }
+      .dark .shadow-lg {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+      }
+      .video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 177.78%; /* 9:16 Aspect Ratio */
+      overflow: hidden;
+      }
+      .video-container iframe,
+      .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      }
+      .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-gap: 1.5rem;
+      grid-auto-flow: dense;
+      }
+      @media (min-width: 768px) {
+      .masonry-grid {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      }
+      @media (min-width: 1024px) {
+      .masonry-grid {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
+      }
+      .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .modal.hidden {
+      opacity: 0;
+      visibility: hidden;
+      }
+      input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #e5e7eb;
+      border-radius: 999px;
+      outline: none;
+      }
+      input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: #6366f1;
+      border-radius: 50%;
+      cursor: pointer;
+      }
+      input[type=range]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: #6366f1;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      }
+      .theme-switch {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      }
+      .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      }
+      .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+      }
+      .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+      }
+      input:checked + .slider {
+      background-color: #6366f1;
+      }
+      input:checked + .slider:before {
+      transform: translateX(24px);
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      .custom-checkbox {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      }
+      .custom-checkbox.checked {
+      background-color: #6366f1;
+      border-color: #6366f1;
+      }
+      .custom-checkbox.checked::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+      .custom-radio {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      }
+      .custom-radio.checked {
+      border-color: #6366f1;
+      }
+      .custom-radio.checked::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #6366f1;
+      }
+      .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+      .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+      }
+      }
+      @media (min-width: 1024px) {
+      .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+      }
+      }
+      .video-thumbnail {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      }
+      .video-thumbnail:hover {
+      transform: translateY(-5px);
+      }
+      .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .video-thumbnail:hover .video-overlay {
+      opacity: 1;
+      }
+      .logo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      }
+      .logo-item:hover {
+      transform: translateY(-5px);
+      }
+      .logo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      }
+      .logo-item:hover .logo-overlay {
+      opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 min-h-screen">
+    <!-- Header -->
+    <header
+      class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 transition-colors duration-300"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+        <div class="hidden md:flex items-center space-x-8">
+          <a
+            href="#home"
+            class="font-medium hover:text-primary transition-colors"
+            >Home</a
+          >
+          <a
+            href="#videos"
+            class="font-medium hover:text-primary transition-colors"
+            >Videos</a
+          >
+          <a
+            href="#logos"
+            class="font-medium hover:text-primary transition-colors"
+            >Logos</a
+          >
+          <a
+            href="#about"
+            class="font-medium hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="font-medium hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+        <div class="flex items-center space-x-4">
+          <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle" />
+            <span class="slider"></span>
+          </label>
+          <button
+            id="mobile-menu-button"
+            class="md:hidden w-10 h-10 flex items-center justify-center"
+          >
+            <i class="ri-menu-line ri-lg"></i>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="md:hidden hidden bg-white border-t border-gray-200 transition-colors duration-300"
+      >
+        <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+          <a
+            href="#home"
+            class="py-2 font-medium hover:text-primary transition-colors"
+            >Home</a
+          >
+          <a
+            href="#videos"
+            class="py-2 font-medium hover:text-primary transition-colors"
+            >Videos</a
+          >
+          <a
+            href="#logos"
+            class="py-2 font-medium hover:text-primary transition-colors"
+            >Logos</a
+          >
+          <a
+            href="#about"
+            class="py-2 font-medium hover:text-primary transition-colors"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="py-2 font-medium hover:text-primary transition-colors"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section
+        id="home"
+        class="min-h-screen flex items-center justify-center py-16 px-4"
+        style="background-image: url('https://readdy.ai/api/search-image?query=minimal%20abstract%20creative%20background%20with%20subtle%20gradient%2C%20clean%20design%20aesthetic%2C%20soft%20colors%2C%20professional%20portfolio%20atmosphere%2C%20creative%20workspace%20with%20subtle%20design%20elements%2C%20modern%20and%20elegant&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;"
+      >
+        <div
+          class="container mx-auto flex flex-col md:flex-row items-center justify-between"
+        >
+          <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            >
+              Creative <span class="text-primary">Video Editor</span> &
+              <span class="text-secondary">Graphic Designer</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-xl">
+              Transforming ideas into captivating visual stories and memorable
+              brand identities. Specializing in vertical video content and
+              distinctive logo design.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start"
+            >
+              <a
+                href="#videos"
+                class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all shadow-lg whitespace-nowrap"
+                >View My Work</a
+              >
+              <a
+                href="#contact"
+                class="border-2 border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary hover:text-white transition-all whitespace-nowrap"
+                >Get In Touch</a
+              >
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center md:justify-end">
+            <div
+              class="relative w-64 md:w-80 aspect-[4/5] rounded-xl overflow-hidden shadow-2xl"
+            >
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="absolute inset-0 w-full h-full object-cover"
+              >
+                <source
+                  src="https://readdy.ai/api/search-image?query=creative%20vertical%20video%20showreel%20with%20dynamic%20transitions%2C%20showing%20portfolio%20work%2C%20motion%20graphics%2C%20visual%20effects%2C%20editing%20skills%2C%20professional%20video%20production%2C%20vertical%20format%20for%20mobile%20viewing%2C%20high%20quality%20production&width=800&height=1000&seq=showreel1&orientation=portrait"
+                  type="video/mp4"
+                />
+              </video>
+              <a
+                href="https://drive.google.com/file/d/1PbP8t9jgFH0-T7_xlF73JnHw446U0Qfy/view?usp=sharing"
+                data-readdy="true"
+              >
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+                ></div>
+              </a>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <div class="flex items-center space-x-2 mb-2">
+                  <div
+                    class="w-8 h-8 flex items-center justify-center bg-primary rounded-full"
+                  >
+                    <i class="ri-play-fill ri-sm"></i>
+                  </div>
+                  <span class="text-sm font-medium">Featured Reel</span>
+                </div>
+                <div
+                  class="w-full bg-white/30 h-1 rounded-full overflow-hidden"
+                >
+                  <div class="bg-primary h-full w-3/4 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Video Portfolio Section -->
+      <section
+        id="videos"
+        class="py-20 px-4 bg-gray-50 transition-colors duration-300"
+      >
+        <div class="container mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Video Portfolio</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Explore my collection of vertical videos across different
+              categories. Each project showcases my unique style and technical
+              expertise in video editing.
+            </p>
+          </div>
+          <!-- Category Filter -->
+          <div class="flex justify-center mb-10 overflow-x-auto pb-2">
+            <div class="inline-flex bg-white p-1 rounded-full shadow-md">
+              <button
+                class="video-filter-btn active px-4 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap"
+                data-category="all"
+              >
+                All Videos
+              </button>
+              <button
+                class="video-filter-btn px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+                data-category="travel"
+              >
+                Travel
+              </button>
+              <button
+                class="video-filter-btn px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+                data-category="fashion"
+              >
+                Fashion
+              </button>
+              <button
+                class="video-filter-btn px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+                data-category="product"
+              >
+                Product Ads
+              </button>
+              <button
+                class="video-filter-btn px-4 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 transition-colors whitespace-nowrap"
+                data-category="reels"
+              >
+                Reels
+              </button>
+            </div>
+          </div>
+          <!-- Video Grid -->
+          <div class="video-grid">
+            <!-- Travel Videos -->
+            <div class="video-item" data-category="travel">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=scenic%20travel%20footage%20of%20beautiful%20mountain%20landscapes%20with%20lakes%2C%20hiking%20trails%2C%20lush%20forests%2C%20and%20stunning%20vistas%2C%20vertical%20format%20for%20mobile%20viewing%2C%20cinematic%20quality%20with%20rich%20colors%20and%20dramatic%20lighting%2C%20professional%20travel%20videography&width=720&height=1280&seq=travel1&orientation=portrait"
+                  alt="Mountain Escape"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="travel1"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Mountain Escape</h3>
+                      <p class="text-white/80 text-sm">Travel Series</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-youtube-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-item" data-category="travel">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=coastal%20travel%20video%20featuring%20beautiful%20beaches%2C%20ocean%20waves%2C%20sunset%20over%20water%2C%20beachside%20cafes%2C%20and%20relaxing%20beach%20activities%2C%20vertical%20format%20for%20mobile%20viewing%2C%20bright%20natural%20lighting%20with%20warm%20tones%2C%20professional%20travel%20videography&width=720&height=1280&seq=travel2&orientation=portrait"
+                  alt="Coastal Journey"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="travel2"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Coastal Journey</h3>
+                      <p class="text-white/80 text-sm">Travel Series</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-vimeo-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fashion Videos -->
+            <div class="video-item" data-category="fashion">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=high-end%20fashion%20video%20shoot%20with%20professional%20models%20showcasing%20designer%20clothing%2C%20stylish%20outfits%20on%20runway%20or%20urban%20setting%2C%20elegant%20fashion%20photography%20with%20dramatic%20lighting%2C%20vertical%20format%20for%20mobile%20viewing%2C%20artistic%20fashion%20videography&width=720&height=1280&seq=fashion1&orientation=portrait"
+                  alt="Summer Collection"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="fashion1"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Summer Collection</h3>
+                      <p class="text-white/80 text-sm">Fashion Campaign</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-instagram-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-item" data-category="fashion">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=urban%20street%20fashion%20video%20with%20trendy%20young%20models%20in%20casual%20streetwear%2C%20city%20background%20with%20graffiti%20and%20urban%20elements%2C%20dynamic%20camera%20movements%2C%20vertical%20format%20for%20mobile%20viewing%2C%20modern%20street%20style%20fashion%20videography&width=720&height=1280&seq=fashion2&orientation=portrait"
+                  alt="Urban Street Style"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="fashion2"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Urban Street Style</h3>
+                      <p class="text-white/80 text-sm">Fashion Campaign</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-tiktok-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Product Ads -->
+            <div class="video-item" data-category="product">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=premium%20product%20advertisement%20for%20luxury%20watch%20with%20close-up%20details%2C%20elegant%20presentation%20on%20minimal%20background%2C%20professional%20product%20photography%20with%20dramatic%20lighting%20and%20shadows%2C%20vertical%20format%20for%20mobile%20viewing%2C%20high-end%20commercial%20videography&width=720&height=1280&seq=product1&orientation=portrait"
+                  alt="Luxury Timepiece"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="product1"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Luxury Timepiece</h3>
+                      <p class="text-white/80 text-sm">Product Ad</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-youtube-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-item" data-category="product">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=modern%20tech%20gadget%20advertisement%20showcasing%20sleek%20smartphone%20or%20electronic%20device%20with%20dynamic%20transitions%2C%20product%20features%20demonstration%2C%20clean%20minimal%20background%2C%20vertical%20format%20for%20mobile%20viewing%2C%20high-tech%20product%20commercial%20videography&width=720&height=1280&seq=product2&orientation=portrait"
+                  alt="Smart Tech"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="product2"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Smart Tech</h3>
+                      <p class="text-white/80 text-sm">Product Ad</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-instagram-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Reels -->
+            <div class="video-item" data-category="reels">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=creative%20social%20media%20reel%20with%20fast-paced%20editing%2C%20dynamic%20transitions%20between%20scenes%2C%20trendy%20visual%20effects%2C%20engaging%20content%20for%20young%20audience%2C%20vertical%20format%20for%20mobile%20viewing%2C%20social%20media%20optimized%20videography&width=720&height=1280&seq=reel1&orientation=portrait"
+                  alt="Trending Now"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="reel1"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Trending Now</h3>
+                      <p class="text-white/80 text-sm">Social Reel</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-instagram-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-item" data-category="reels">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=lifestyle%20social%20media%20reel%20showcasing%20day%20in%20the%20life%2C%20coffee%20shop%20scenes%2C%20workspace%20moments%2C%20casual%20activities%2C%20warm%20aesthetic%20with%20soft%20colors%2C%20vertical%20format%20for%20mobile%20viewing%2C%20lifestyle%20content%20creator%20videography&width=720&height=1280&seq=reel2&orientation=portrait"
+                  alt="Day in Life"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="reel2"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Day in Life</h3>
+                      <p class="text-white/80 text-sm">Lifestyle Reel</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-tiktok-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-item" data-category="reels">
+              <div
+                class="video-thumbnail aspect-[9/16] bg-gray-200 rounded-lg shadow-lg overflow-hidden"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=creative%20tutorial%20or%20how-to%20social%20media%20reel%20with%20step-by-step%20instructions%2C%20educational%20content%20with%20engaging%20visuals%2C%20informative%20and%20entertaining%20format%2C%20vertical%20format%20for%20mobile%20viewing%2C%20educational%20content%20creator%20videography&width=720&height=1280&seq=reel3&orientation=portrait"
+                  alt="Quick Tips"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div class="video-overlay">
+                  <button
+                    class="play-video-btn bg-white/20 backdrop-blur-sm p-3 rounded-full hover:bg-primary transition-colors"
+                    data-video="reel3"
+                  >
+                    <i class="ri-play-fill ri-2x text-white"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h3 class="text-white font-medium">Quick Tips</h3>
+                      <p class="text-white/80 text-sm">Tutorial Reel</p>
+                    </div>
+                    <div
+                      class="w-8 h-8 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
+                    >
+                      <i class="ri-instagram-fill ri-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <button
+              class="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap"
+            >
+              Load More
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Logo Portfolio Section -->
+      <section
+        id="logos"
+        class="py-20 px-4 bg-white transition-colors duration-300"
+      >
+        <div class="container mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Logo Design</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Browse through my logo design projects. Each logo is crafted with
+              attention to detail, ensuring it captures the essence of the brand
+              it represents.
+            </p>
+          </div>
+          <!-- Logo Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=minimal%20and%20clean%20logo%20design%20for%20tech%20company%2C%20simple%20geometric%20shapes%2C%20modern%20typography%2C%20black%20and%20white%20color%20scheme%2C%20professional%20corporate%20identity%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo1&orientation=squarish"
+                  alt="TechFlow Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">TechFlow</h3>
+                  <p class="text-sm mb-4 text-center">
+                    Software Development Company
+                  </p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=minimal%20logo%20design%20for%20wellness%20brand%2C%20simple%20line%20art%2C%20organic%20shapes%2C%20soft%20color%20palette%20with%20pastel%20tones%2C%20clean%20and%20elegant%20design%2C%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo2&orientation=squarish"
+                  alt="Serene Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Serene</h3>
+                  <p class="text-sm mb-4 text-center">Wellness & Spa Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=abstract%20logo%20design%20with%20fluid%20shapes%20and%20vibrant%20colors%2C%20dynamic%20and%20modern%20feel%2C%20creative%20agency%20branding%2C%20artistic%20expression%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo3&orientation=squarish"
+                  alt="Flux Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Flux</h3>
+                  <p class="text-sm mb-4 text-center">Creative Agency</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=abstract%20geometric%20logo%20design%20with%20overlapping%20shapes%2C%20tech%20startup%20branding%2C%20modern%20and%20innovative%20feel%2C%20bold%20colors%20with%20blue%20and%20purple%20tones%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo4&orientation=squarish"
+                  alt="Nexus Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Nexus</h3>
+                  <p class="text-sm mb-4 text-center">Tech Startup</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=typography-based%20logo%20design%20with%20custom%20lettering%2C%20elegant%20and%20sophisticated%20wordmark%2C%20fashion%20brand%20identity%2C%20stylish%20and%20modern%20font%20treatment%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo5&orientation=squarish"
+                  alt="Elegance Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Elegance</h3>
+                  <p class="text-sm mb-4 text-center">Fashion Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=bold%20typography%20logo%20design%20with%20creative%20letter%20treatment%2C%20unique%20wordmark%20for%20coffee%20brand%2C%20rustic%20yet%20modern%20feel%2C%20warm%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo6&orientation=squarish"
+                  alt="Brew Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Brew</h3>
+                  <p class="text-sm mb-4 text-center">Specialty Coffee Shop</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20detailed%20mascot%20or%20character%2C%20playful%20and%20engaging%2C%20gaming%20company%20branding%2C%20vibrant%20colors%20and%20dynamic%20composition%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo7&orientation=squarish"
+                  alt="Pixel Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Pixel</h3>
+                  <p class="text-sm mb-4 text-center">Gaming Company</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20nature-inspired%20elements%2C%20organic%20farm%20or%20food%20brand%20identity%2C%20hand-drawn%20style%20with%20detailed%20illustrations%2C%20earthy%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo8&orientation=squarish"
+                  alt="Harvest Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Harvest</h3>
+                  <p class="text-sm mb-4 text-center">Organic Food Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Logo Grid -->
+          <div class="masonry-grid">
+            <!-- Minimal Logos -->
+            <div class="logo-item" data-style="minimal">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=minimal%20and%20clean%20logo%20design%20for%20tech%20company%2C%20simple%20geometric%20shapes%2C%20modern%20typography%2C%20black%20and%20white%20color%20scheme%2C%20professional%20corporate%20identity%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo1&orientation=squarish"
+                  alt="TechFlow Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">TechFlow</h3>
+                  <p class="text-sm mb-4 text-center">
+                    Software Development Company
+                  </p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item" data-style="minimal">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=minimal%20logo%20design%20for%20wellness%20brand%2C%20simple%20line%20art%2C%20organic%20shapes%2C%20soft%20color%20palette%20with%20pastel%20tones%2C%20clean%20and%20elegant%20design%2C%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo2&orientation=squarish"
+                  alt="Serene Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Serene</h3>
+                  <p class="text-sm mb-4 text-center">Wellness & Spa Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Abstract Logos -->
+            <div class="logo-item" data-style="abstract">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=abstract%20logo%20design%20with%20fluid%20shapes%20and%20vibrant%20colors%2C%20dynamic%20and%20modern%20feel%2C%20creative%20agency%20branding%2C%20artistic%20expression%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo3&orientation=squarish"
+                  alt="Flux Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Flux</h3>
+                  <p class="text-sm mb-4 text-center">Creative Agency</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item" data-style="abstract">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=abstract%20geometric%20logo%20design%20with%20overlapping%20shapes%2C%20tech%20startup%20branding%2C%20modern%20and%20innovative%20feel%2C%20bold%20colors%20with%20blue%20and%20purple%20tones%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo4&orientation=squarish"
+                  alt="Nexus Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Nexus</h3>
+                  <p class="text-sm mb-4 text-center">Tech Startup</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Typography Logos -->
+            <div class="logo-item" data-style="typography">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=typography-based%20logo%20design%20with%20custom%20lettering%2C%20elegant%20and%20sophisticated%20wordmark%2C%20fashion%20brand%20identity%2C%20stylish%20and%20modern%20font%20treatment%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo5&orientation=squarish"
+                  alt="Elegance Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Elegance</h3>
+                  <p class="text-sm mb-4 text-center">Fashion Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item" data-style="typography">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=bold%20typography%20logo%20design%20with%20creative%20letter%20treatment%2C%20unique%20wordmark%20for%20coffee%20brand%2C%20rustic%20yet%20modern%20feel%2C%20warm%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo6&orientation=squarish"
+                  alt="Brew Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Brew</h3>
+                  <p class="text-sm mb-4 text-center">Specialty Coffee Shop</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Illustrative Logos -->
+            <div class="logo-item" data-style="illustrative">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20detailed%20mascot%20or%20character%2C%20playful%20and%20engaging%2C%20gaming%20company%20branding%2C%20vibrant%20colors%20and%20dynamic%20composition%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo7&orientation=squarish"
+                  alt="Pixel Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Pixel</h3>
+                  <p class="text-sm mb-4 text-center">Gaming Company</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="logo-item" data-style="illustrative">
+              <div
+                class="bg-gray-100 p-6 rounded-lg shadow-md aspect-square flex items-center justify-center"
+              >
+                <img
+                  src="https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20nature-inspired%20elements%2C%20organic%20farm%20or%20food%20brand%20identity%2C%20hand-drawn%20style%20with%20detailed%20illustrations%2C%20earthy%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo8&orientation=squarish"
+                  alt="Harvest Logo"
+                  class="w-4/5 h-4/5 object-contain"
+                />
+                <div class="logo-overlay text-white">
+                  <h3 class="text-xl font-medium mb-2">Harvest</h3>
+                  <p class="text-sm mb-4 text-center">Organic Food Brand</p>
+                  <button
+                    class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-button text-sm hover:bg-primary transition-colors whitespace-nowrap"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-12">
+            <button
+              class="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-button font-medium hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap"
+            >
+              View Full Portfolio
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section
+        id="about"
+        class="py-20 px-4 bg-gray-50 transition-colors duration-300"
+      >
+        <div class="container mx-auto">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+              <p class="text-gray-600">
+                Get to know the creative mind behind the videos and logos.
+              </p>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-10">
+              <div class="md:w-1/3">
+                <div
+                  class="relative w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-white shadow-xl"
+                >
+                  <img
+                    src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20a%20creative%20designer%20in%20a%20modern%20studio%20setting%2C%20casual%20professional%20attire%2C%20friendly%20expression%2C%20soft%20natural%20lighting%2C%20clean%20background%2C%20high%20quality%20professional%20photography&width=800&height=800&seq=portrait1&orientation=squarish"
+                    alt="Designer Portrait"
+                    class="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              <div class="md:w-2/3">
+                <h3 class="text-2xl font-bold mb-4">
+                  Creative Video Editor & Logo Designer
+                </h3>
+                <p class="text-gray-700 mb-4">
+                  With over 8 years of experience in digital media, I specialize
+                  in creating engaging vertical videos and distinctive logo
+                  designs that help brands stand out in today's crowded digital
+                  landscape.
+                </p>
+                <p class="text-gray-700 mb-6">
+                  My approach combines technical expertise with a keen eye for
+                  aesthetics, allowing me to deliver content that not only looks
+                  great but also effectively communicates my clients' messages.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-2">
+                      <div
+                        class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                      >
+                        <i class="ri-video-line ri-lg text-primary"></i>
+                      </div>
+                      <h4 class="font-medium">Video Editing</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                      Specialized in vertical video content optimized for mobile
+                      platforms and social media.
+                    </p>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-2">
+                      <div
+                        class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                      >
+                        <i class="ri-pen-nib-line ri-lg text-primary"></i>
+                      </div>
+                      <h4 class="font-medium">Logo Design</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                      Creating memorable brand identities through thoughtful and
+                      strategic logo design.
+                    </p>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-2">
+                      <div
+                        class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                      >
+                        <i class="ri-movie-line ri-lg text-primary"></i>
+                      </div>
+                      <h4 class="font-medium">Motion Graphics</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                      Adding dynamic visual elements to enhance video content
+                      and bring designs to life.
+                    </p>
+                  </div>
+                  <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-2">
+                      <div
+                        class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                      >
+                        <i class="ri-palette-line ri-lg text-primary"></i>
+                      </div>
+                      <h4 class="font-medium">Brand Identity</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                      Developing cohesive visual systems that communicate brand
+                      values and personality.
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >Adobe Premiere Pro</span
+                  >
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >After Effects</span
+                  >
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >Illustrator</span
+                  >
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >Photoshop</span
+                  >
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >CapCut Pro</span
+                  >
+                  <span
+                    class="bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-700"
+                    >AI Tools</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="py-20 px-4 bg-white transition-colors duration-300"
+      >
+        <div class="container mx-auto">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+              <p class="text-gray-600">
+                Have a project in mind? Let's discuss how we can work together.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div>
+                <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                <div class="space-y-4">
+                  <div class="flex items-center">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                    >
+                      <i class="ri-mail-line ri-lg text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Email</p>
+                      <p class="font-medium">hoangkha20122@gmail.com</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                    >
+                      <i class="ri-phone-line ri-lg text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Phone</p>
+                      <p class="font-medium">+84 91 179 3231</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div
+                      class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full mr-3"
+                    >
+                      <i class="ri-map-pin-line ri-lg text-primary"></i>
+                    </div>
+                    <div>
+                      <p class="text-sm text-gray-500">Location</p>
+                      <p class="font-medium">Ho Chi Minh City, Vietnam</p>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold mt-8 mb-4">Follow Me</h3>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <i class="ri-instagram-line ri-lg"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <i class="ri-youtube-line ri-lg"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <i class="ri-behance-line ri-lg"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <i class="ri-dribbble-line ri-lg"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full hover:bg-primary hover:text-white transition-colors"
+                  >
+                    <i class="ri-linkedin-line ri-lg"></i>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-4">Send a Message</h3>
+                <form id="contact-form" class="space-y-4">
+                  <div>
+                    <label
+                      for="name"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="email"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Email</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your email"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="subject"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Subject</label
+                    >
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Subject"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="message"
+                      class="block text-sm font-medium text-gray-700 mb-1"
+                      >Message</label
+                    >
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="4"
+                      class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="Your message"
+                    ></textarea>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="custom-checkbox" id="agreement-checkbox"></div>
+                    <label
+                      for="agreement-checkbox"
+                      class="ml-2 text-sm text-gray-600"
+                      >I agree to the privacy policy and terms of service</label
+                    >
+                  </div>
+                  <button
+                    type="submit"
+                    class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-gray-900 text-white py-12 px-4 transition-colors duration-300"
+    >
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <a
+              href="#"
+              class="text-2xl font-['Pacifico'] text-white mb-4 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-6">
+              Creative video editing and logo design services for brands that
+              want to stand out.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-instagram-line ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-youtube-line ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-behance-line ri-lg"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors"
+              >
+                <i class="ri-dribbble-line ri-lg"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#home"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#videos"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Videos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#logos"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Logos</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Services</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Video Editing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Logo Design</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Motion Graphics</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Brand Identity</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors"
+                  >Social Media Content</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-4">Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Subscribe to receive updates on new projects and creative
+              insights.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="px-4 py-2 w-full bg-gray-800 border border-gray-700 rounded-l focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white"
+              />
+              <button
+                type="submit"
+                class="bg-primary px-4 py-2 rounded-r hover:bg-opacity-90 transition-all whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 Creative Portfolio. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Privacy Policy</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Terms of Service</a
+            >
+            <a
+              href="#"
+              class="text-gray-400 hover:text-white text-sm transition-colors"
+              >Cookies Policy</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Video Modal -->
+    <div
+      id="video-modal"
+      class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+    >
+      <div
+        class="relative bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden"
+      >
+        <div
+          class="p-4 border-b border-gray-200 flex justify-between items-center"
+        >
+          <h3 id="modal-title" class="text-xl font-bold">Video Title</h3>
+          <button
+            id="close-modal"
+            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700"
+          >
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+        <div class="video-container aspect-[9/16] max-h-[70vh] mx-auto">
+          <div id="modal-video-container"></div>
+        </div>
+        <div class="p-4 border-t border-gray-200">
+          <p id="modal-description" class="text-gray-700">
+            Video description goes here.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Logo Modal -->
+    <div
+      id="logo-modal"
+      class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+    >
+      <div
+        class="relative bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto"
+      >
+        <div
+          class="p-4 border-b border-gray-200 flex justify-between items-center"
+        >
+          <h3 id="logo-modal-title" class="text-xl font-bold">Logo Title</h3>
+          <button
+            id="close-logo-modal"
+            class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700"
+          >
+            <i class="ri-close-line ri-lg"></i>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          <div
+            class="bg-gray-100 p-8 rounded-lg flex items-center justify-center"
+          >
+            <img
+              id="logo-modal-image"
+              src=""
+              alt="Logo"
+              class="max-w-full max-h-[400px] object-contain"
+            />
+          </div>
+          <div>
+            <h4 class="text-lg font-bold mb-2">Project Details</h4>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-500">Client</p>
+                <p id="logo-modal-client" class="font-medium">Client Name</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Industry</p>
+                <p id="logo-modal-industry" class="font-medium">
+                  Industry Type
+                </p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Year</p>
+                <p id="logo-modal-year" class="font-medium">2025</p>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Description</p>
+                <p id="logo-modal-description" class="text-gray-700">
+                  Logo description goes here.
+                </p>
+              </div>
+            </div>
+            <h4 class="text-lg font-bold mt-6 mb-2">Color Palette</h4>
+            <div id="logo-modal-colors" class="flex space-x-2 mb-6">
+              <div class="w-10 h-10 rounded-full bg-blue-500"></div>
+              <div class="w-10 h-10 rounded-full bg-indigo-500"></div>
+              <div class="w-10 h-10 rounded-full bg-purple-500"></div>
+            </div>
+            <div class="flex space-x-3">
+              <button
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap"
+              >
+                <i class="ri-download-line ri-sm mr-1"></i> Download
+              </button>
+              <button
+                class="bg-gray-200 text-gray-700 px-4 py-2 rounded-button font-medium hover:bg-gray-300 transition-colors whitespace-nowrap"
+              >
+                <i class="ri-share-line ri-sm mr-1"></i> Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Scripts -->
+    <script id="theme-toggle-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          body.classList.add("dark");
+          themeToggle.checked = true;
+        }
+        // Toggle theme
+        themeToggle.addEventListener("change", function () {
+          if (this.checked) {
+            body.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+          } else {
+            body.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+          }
+        });
+      });
+    </script>
+    <script id="mobile-menu-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          // Change icon based on menu state
+          const icon = mobileMenuButton.querySelector("i");
+          if (mobileMenu.classList.contains("hidden")) {
+            icon.className = "ri-menu-line ri-lg";
+          } else {
+            icon.className = "ri-close-line ri-lg";
+          }
+        });
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            mobileMenu.classList.add("hidden");
+            mobileMenuButton.querySelector("i").className = "ri-menu-line ri-lg";
+          });
+        });
+      });
+    </script>
+    <script id="video-filter-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".video-filter-btn");
+        const videoItems = document.querySelectorAll(".video-item");
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("active", "bg-primary", "text-white");
+              btn.classList.add("text-gray-700", "hover:bg-gray-100");
+            });
+            // Add active class to clicked button
+            this.classList.add("active", "bg-primary", "text-white");
+            this.classList.remove("text-gray-700", "hover:bg-gray-100");
+            const category = this.getAttribute("data-category");
+            // Filter videos
+            videoItems.forEach((item) => {
+              if (
+                category === "all" ||
+                item.getAttribute("data-category") === category
+              ) {
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+    <script id="logo-filter-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(".logo-filter-btn");
+        const logoItems = document.querySelectorAll(".logo-item");
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("active", "bg-primary", "text-white");
+              btn.classList.add("text-gray-700", "hover:bg-gray-200");
+            });
+            // Add active class to clicked button
+            this.classList.add("active", "bg-primary", "text-white");
+            this.classList.remove("text-gray-700", "hover:bg-gray-200");
+            const style = this.getAttribute("data-style");
+            // Filter logos
+            logoItems.forEach((item) => {
+              if (style === "all" || item.getAttribute("data-style") === style) {
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+    <script id="video-modal-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("video-modal");
+        const closeModalBtn = document.getElementById("close-modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDescription = document.getElementById("modal-description");
+        const modalVideoContainer = document.getElementById("modal-video-container");
+        const playButtons = document.querySelectorAll(".play-video-btn");
+        // Video data
+        const videoData = {
+          travel1: {
+            title: "Mountain Escape",
+            description:
+              "A breathtaking journey through the majestic mountains, capturing the serenity and grandeur of nature. This vertical video showcases stunning vistas, hiking trails, and peaceful moments in the wilderness.",
+            source:
+              "https://readdy.ai/api/search-image?query=scenic%20travel%20footage%20of%20beautiful%20mountain%20landscapes%20with%20lakes%2C%20hiking%20trails%2C%20lush%20forests%2C%20and%20stunning%20vistas%2C%20vertical%20format%20for%20mobile%20viewing%2C%20cinematic%20quality%20with%20rich%20colors%20and%20dramatic%20lighting%2C%20professional%20travel%20videography&width=720&height=1280&seq=travel1&orientation=portrait",
+          },
+          travel2: {
+            title: "Coastal Journey",
+            description:
+              "Experience the relaxing rhythm of coastal life in this vertical video. From golden beaches to stunning sunsets over the ocean, this piece captures the essence of seaside exploration and tranquility.",
+            source:
+              "https://readdy.ai/api/search-image?query=coastal%20travel%20video%20featuring%20beautiful%20beaches%2C%20ocean%20waves%2C%20sunset%20over%20water%2C%20beachside%20cafes%2C%20and%20relaxing%20beach%20activities%2C%20vertical%20format%20for%20mobile%20viewing%2C%20bright%20natural%20lighting%20with%20warm%20tones%2C%20professional%20travel%20videography&width=720&height=1280&seq=travel2&orientation=portrait",
+          },
+          fashion1: {
+            title: "Summer Collection",
+            description:
+              "A stylish showcase of the latest summer fashion trends. This vertical video features elegant designs, professional models, and artistic direction to highlight the beauty of each piece in the collection.",
+            source:
+              "https://readdy.ai/api/search-image?query=high-end%20fashion%20video%20shoot%20with%20professional%20models%20showcasing%20designer%20clothing%2C%20stylish%20outfits%20on%20runway%20or%20urban%20setting%2C%20elegant%20fashion%20photography%20with%20dramatic%20lighting%2C%20vertical%20format%20for%20mobile%20viewing%2C%20artistic%20fashion%20videography&width=720&height=1280&seq=fashion1&orientation=portrait",
+          },
+          fashion2: {
+            title: "Urban Street Style",
+            description:
+              "Capturing the energy and attitude of contemporary street fashion. This vertical video presents casual streetwear in urban settings, with dynamic transitions and a modern aesthetic.",
+            source:
+              "https://readdy.ai/api/search-image?query=urban%20street%20fashion%20video%20with%20trendy%20young%20models%20in%20casual%20streetwear%2C%20city%20background%20with%20graffiti%20and%20urban%20elements%2C%20dynamic%20camera%20movements%2C%20vertical%20format%20for%20mobile%20viewing%2C%20modern%20street%20style%20fashion%20videography&width=720&height=1280&seq=fashion2&orientation=portrait",
+          },
+          product1: {
+            title: "Luxury Timepiece",
+            description:
+              "An elegant presentation of a premium watch collection. This vertical video uses macro photography and dramatic lighting to showcase the craftsmanship and details of these luxury timepieces.",
+            source:
+              "https://readdy.ai/api/search-image?query=premium%20product%20advertisement%20for%20luxury%20watch%20with%20close-up%20details%2C%20elegant%20presentation%20on%20minimal%20background%2C%20professional%20product%20photography%20with%20dramatic%20lighting%20and%20shadows%2C%20vertical%20format%20for%20mobile%20viewing%2C%20high-end%20commercial%20videography&width=720&height=1280&seq=product1&orientation=portrait",
+          },
+          product2: {
+            title: "Smart Tech",
+            description:
+              "A dynamic showcase of the latest smartphone technology. This vertical video demonstrates key features and benefits through sleek transitions and clean visual design.",
+            source:
+              "https://readdy.ai/api/search-image?query=modern%20tech%20gadget%20advertisement%20showcasing%20sleek%20smartphone%20or%20electronic%20device%20with%20dynamic%20transitions%2C%20product%20features%20demonstration%2C%20clean%20minimal%20background%2C%20vertical%20format%20for%20mobile%20viewing%2C%20high-tech%20product%20commercial%20videography&width=720&height=1280&seq=product2&orientation=portrait",
+          },
+          reel1: {
+            title: "Trending Now",
+            description:
+              "A fast-paced social media reel featuring current trends and engaging visual effects. Created for maximum impact on platforms like Instagram and TikTok.",
+            source:
+              "https://readdy.ai/api/search-image?query=creative%20social%20media%20reel%20with%20fast-paced%20editing%2C%20dynamic%20transitions%20between%20scenes%2C%20trendy%20visual%20effects%2C%20engaging%20content%20for%20young%20audience%2C%20vertical%20format%20for%20mobile%20viewing%2C%20social%20media%20optimized%20videography&width=720&height=1280&seq=reel1&orientation=portrait",
+          },
+          reel2: {
+            title: "Day in Life",
+            description:
+              "A lifestyle reel showcasing daily moments from morning coffee to evening relaxation. This vertical video captures the aesthetic of everyday life with a warm, inviting tone.",
+            source:
+              "https://readdy.ai/api/search-image?query=lifestyle%20social%20media%20reel%20showcasing%20day%20in%20the%20life%2C%20coffee%20shop%20scenes%2C%20workspace%20moments%2C%20casual%20activities%2C%20warm%20aesthetic%20with%20soft%20colors%2C%20vertical%20format%20for%20mobile%20viewing%2C%20lifestyle%20content%20creator%20videography&width=720&height=1280&seq=reel2&orientation=portrait",
+          },
+          reel3: {
+            title: "Quick Tips",
+            description:
+              "An educational reel providing useful tips and tricks in an engaging format. This vertical video combines information with entertainment for maximum viewer retention.",
+            source:
+              "https://readdy.ai/api/search-image?query=creative%20tutorial%20or%20how-to%20social%20media%20reel%20with%20step-by-step%20instructions%2C%20educational%20content%20with%20engaging%20visuals%2C%20informative%20and%20entertaining%20format%2C%20vertical%20format%20for%20mobile%20viewing%2C%20educational%20content%20creator%20videography&width=720&height=1280&seq=reel3&orientation=portrait",
+          },
+        };
+        // Open modal with video
+        playButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const videoId = this.getAttribute("data-video");
+            const video = videoData[videoId];
+            if (video) {
+              modalTitle.textContent = video.title;
+              modalDescription.textContent = video.description;
+              // Create video element
+              modalVideoContainer.innerHTML = "";
+              const videoElement = document.createElement("img");
+              videoElement.src = video.source;
+              videoElement.className = "w-full h-full object-cover";
+              modalVideoContainer.appendChild(videoElement);
+              // Show modal
+              modal.classList.remove("hidden");
+              document.body.style.overflow = "hidden"; // Prevent scrolling
+            }
+          });
+        });
+        // Close modal
+        closeModalBtn.addEventListener("click", function () {
+          modal.classList.add("hidden");
+          document.body.style.overflow = ""; // Enable scrolling
+          modalVideoContainer.innerHTML = ""; // Clear video
+        });
+        // Close modal when clicking outside
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Enable scrolling
+            modalVideoContainer.innerHTML = ""; // Clear video
+          }
+        });
+      });
+    </script>
+    <script id="logo-modal-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("logo-modal");
+        const closeModalBtn = document.getElementById("close-logo-modal");
+        const modalTitle = document.getElementById("logo-modal-title");
+        const modalClient = document.getElementById("logo-modal-client");
+        const modalIndustry = document.getElementById("logo-modal-industry");
+        const modalYear = document.getElementById("logo-modal-year");
+        const modalDescription = document.getElementById("logo-modal-description");
+        const modalImage = document.getElementById("logo-modal-image");
+        const modalColors = document.getElementById("logo-modal-colors");
+        const logoItems = document.querySelectorAll(".logo-item button");
+        // Logo data
+        const logoData = {
+          TechFlow: {
+            client: "TechFlow Inc.",
+            industry: "Software Development",
+            year: "2025",
+            description:
+              "A minimal, geometric logo design for a forward-thinking software development company. The clean lines and modern typography reflect the company's focus on streamlined, efficient solutions.",
+            image:
+              "https://readdy.ai/api/search-image?query=minimal%20and%20clean%20logo%20design%20for%20tech%20company%2C%20simple%20geometric%20shapes%2C%20modern%20typography%2C%20black%20and%20white%20color%20scheme%2C%20professional%20corporate%20identity%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo1&orientation=squarish",
+            colors: [
+              { color: "#2563eb", name: "Royal Blue" },
+              { color: "#1e40af", name: "Navy Blue" },
+              { color: "#111827", name: "Charcoal" },
+            ],
+          },
+          Serene: {
+            client: "Serene Wellness",
+            industry: "Health & Wellness",
+            year: "2024",
+            description:
+              "A gentle, organic logo design for a wellness and spa brand. The soft lines and pastel color palette evoke a sense of calm and tranquility, perfectly aligned with the brand's focus on relaxation and self-care.",
+            image:
+              "https://readdy.ai/api/search-image?query=minimal%20logo%20design%20for%20wellness%20brand%2C%20simple%20line%20art%2C%20organic%20shapes%2C%20soft%20color%20palette%20with%20pastel%20tones%2C%20clean%20and%20elegant%20design%2C%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo2&orientation=squarish",
+            colors: [
+              { color: "#8bd3c7", name: "Mint" },
+              { color: "#bfdbfe", name: "Soft Blue" },
+              { color: "#f9fafb", name: "Off White" },
+            ],
+          },
+          Flux: {
+            client: "Flux Creative Agency",
+            industry: "Creative Services",
+            year: "2025",
+            description:
+              "A dynamic, abstract logo for a cutting-edge creative agency. The fluid shapes and vibrant colors represent the agency's innovative approach and ability to adapt to changing trends in the creative industry.",
+            image:
+              "https://readdy.ai/api/search-image?query=abstract%20logo%20design%20with%20fluid%20shapes%20and%20vibrant%20colors%2C%20dynamic%20and%20modern%20feel%2C%20creative%20agency%20branding%2C%20artistic%20expression%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo3&orientation=squarish",
+            colors: [
+              { color: "#ec4899", name: "Vibrant Pink" },
+              { color: "#8b5cf6", name: "Purple" },
+              { color: "#3b82f6", name: "Blue" },
+            ],
+          },
+          Nexus: {
+            client: "Nexus Technologies",
+            industry: "Tech Startup",
+            year: "2024",
+            description:
+              "A geometric, tech-focused logo for an innovative startup. The overlapping shapes represent connectivity and integration, core values of this technology company.",
+            image:
+              "https://readdy.ai/api/search-image?query=abstract%20geometric%20logo%20design%20with%20overlapping%20shapes%2C%20tech%20startup%20branding%2C%20modern%20and%20innovative%20feel%2C%20bold%20colors%20with%20blue%20and%20purple%20tones%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo4&orientation=squarish",
+            colors: [
+              { color: "#4f46e5", name: "Indigo" },
+              { color: "#7c3aed", name: "Violet" },
+              { color: "#2563eb", name: "Blue" },
+            ],
+          },
+          Elegance: {
+            client: "Elegance Fashion House",
+            industry: "Fashion & Apparel",
+            year: "2025",
+            description:
+              "A sophisticated typography-based logo for a high-end fashion brand. The custom lettering conveys luxury and timeless style, appealing to the brand's discerning clientele.",
+            image:
+              "https://readdy.ai/api/search-image?query=typography-based%20logo%20design%20with%20custom%20lettering%2C%20elegant%20and%20sophisticated%20wordmark%2C%20fashion%20brand%20identity%2C%20stylish%20and%20modern%20font%20treatment%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo5&orientation=squarish",
+            colors: [
+              { color: "#18181b", name: "Rich Black" },
+              { color: "#737373", name: "Slate Gray" },
+              { color: "#f9fafb", name: "Off White" },
+            ],
+          },
+          Brew: {
+            client: "Brew Specialty Coffee",
+            industry: "Food & Beverage",
+            year: "2024",
+            description:
+              "A bold, character-rich wordmark for an artisanal coffee shop. The rustic yet modern typography reflects the brand's commitment to traditional brewing methods with a contemporary twist.",
+            image:
+              "https://readdy.ai/api/search-image?query=bold%20typography%20logo%20design%20with%20creative%20letter%20treatment%2C%20unique%20wordmark%20for%20coffee%20brand%2C%20rustic%20yet%20modern%20feel%2C%20warm%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo6&orientation=squarish",
+            colors: [
+              { color: "#78350f", name: "Coffee Brown" },
+              { color: "#b45309", name: "Amber" },
+              { color: "#f3f4f6", name: "Light Gray" },
+            ],
+          },
+          Pixel: {
+            client: "Pixel Gaming Studios",
+            industry: "Gaming & Entertainment",
+            year: "2025",
+            description:
+              "A playful, character-based logo for a gaming company. The vibrant mascot design appeals to gamers of all ages while conveying the company's fun, energetic brand personality.",
+            image:
+              "https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20detailed%20mascot%20or%20character%2C%20playful%20and%20engaging%2C%20gaming%20company%20branding%2C%20vibrant%20colors%20and%20dynamic%20composition%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo7&orientation=squarish",
+            colors: [
+              { color: "#4338ca", name: "Deep Blue" },
+              { color: "#16a34a", name: "Green" },
+              { color: "#f59e0b", name: "Amber" },
+            ],
+          },
+          Harvest: {
+            client: "Harvest Organic Foods",
+            industry: "Food & Agriculture",
+            year: "2024",
+            description:
+              "A detailed, illustrative logo for an organic food brand. The hand-drawn elements and natural color palette reflect the company's commitment to sustainable, farm-to-table products.",
+            image:
+              "https://readdy.ai/api/search-image?query=illustrative%20logo%20design%20with%20nature-inspired%20elements%2C%20organic%20farm%20or%20food%20brand%20identity%2C%20hand-drawn%20style%20with%20detailed%20illustrations%2C%20earthy%20color%20palette%2C%20clean%20white%20background%2C%20high%20quality%20vector%20style&width=800&height=800&seq=logo8&orientation=squarish",
+            colors: [
+              { color: "#65a30d", name: "Leaf Green" },
+              { color: "#92400e", name: "Earth Brown" },
+              { color: "#f59e0b", name: "Harvest Gold" },
+            ],
+          },
+        };
+        // Open modal with logo details
+        logoItems.forEach((button) => {
+          button.addEventListener("click", function () {
+            const logoName =
+              this.closest(".logo-item").querySelector("h3").textContent;
+            const logo = logoData[logoName];
+            if (logo) {
+              modalTitle.textContent = logoName;
+              modalClient.textContent = logo.client;
+              modalIndustry.textContent = logo.industry;
+              modalYear.textContent = logo.year;
+              modalDescription.textContent = logo.description;
+              modalImage.src = logo.image;
+              // Create color swatches
+              modalColors.innerHTML = "";
+              logo.colors.forEach((colorData) => {
+                const colorDiv = document.createElement("div");
+                colorDiv.className = "flex flex-col items-center";
+                const swatch = document.createElement("div");
+                swatch.className = "w-10 h-10 rounded-full mb-1";
+                swatch.style.backgroundColor = colorData.color;
+                const colorName = document.createElement("span");
+                colorName.className = "text-xs text-gray-600";
+                colorName.textContent = colorData.name;
+                colorDiv.appendChild(swatch);
+                colorDiv.appendChild(colorName);
+                modalColors.appendChild(colorDiv);
+              });
+              // Show modal
+              modal.classList.remove("hidden");
+              document.body.style.overflow = "hidden"; // Prevent scrolling
+            }
+          });
+        });
+        // Close modal
+        closeModalBtn.addEventListener("click", function () {
+          modal.classList.add("hidden");
+          document.body.style.overflow = ""; // Enable scrolling
+        });
+        // Close modal when clicking outside
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Enable scrolling
+          }
+        });
+      });
+    </script>
+    <script id="form-interaction-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Custom checkbox
+        const checkbox = document.getElementById("agreement-checkbox");
+        let isChecked = false;
+        checkbox.addEventListener("click", function () {
+          isChecked = !isChecked;
+          if (isChecked) {
+            this.classList.add("checked");
+          } else {
+            this.classList.remove("checked");
+          }
+        });
+        // Form submission
+        const contactForm = document.getElementById("contact-form");
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Simple validation
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+          if (!name || !email || !subject || !message) {
+            alert("Please fill in all fields");
+            return;
+          }
+          if (!isChecked) {
+            alert("Please agree to the privacy policy and terms of service");
+            return;
+          }
+          // Simulate form submission
+          const submitButton = contactForm.querySelector('button[type="submit"]');
+          submitButton.disabled = true;
+          submitButton.innerHTML =
+            '<i class="ri-loader-4-line ri-spin ri-lg mr-2"></i> Sending...';
+          setTimeout(() => {
+            alert("Message sent successfully!");
+            contactForm.reset();
+            isChecked = false;
+            checkbox.classList.remove("checked");
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Send Message";
+          }, 1500);
+        });
+      });
+    </script>
+    <script id="smooth-scroll-script">
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Offset for fixed header
+              const headerHeight = document.querySelector("header").offsetHeight;
+              const targetPosition =
+                targetElement.getBoundingClientRect().top +
+                window.pageYOffset -
+                headerHeight;
+              window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
